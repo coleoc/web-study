@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #13131b;
+    /* 배경색 */
+    color: #e0e0e0;
+    /* 글자색 */
+    font-family: sans-serif;
+    /* 글꼴 */
+}
+
+header {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /* 내부 여백 */
+}
+
+h1 {
+    font-size: 28px;
+    /* 글자 크기 */
+    margin: 0;
+    /* 여백 제거 */
+}
+
+.search {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+    /* 요소 사이 간격 */
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #44445a;
+    background-color: #2e2e3e;
+    color: #e0e0e0;
+    /* 글자색 */
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    /* 요소 사이 간격 */
+}
+
+a {
+    color: #8ab4f8;
+    text-decoration: none;
+    /* 링크 밑줄 제거 */
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+}
+
+.card {
+    border: 1px solid #44445a;
+    background-color: #2e2e3e;
+    /* 섹션 배경색 */
+    padding: 20px;
+    /* 내부 여백 */
+    margin: 20px 0;
+    /* 외부 여백 */
+    border-radius: 12px;
+    /* 모서리 둥글게 */
+}
+
+footer {
+    text-align: center;
+    /* 텍스트 가운데 정렬 */
+    padding: 20px;
+    /* 내부 여백 */
+}
+
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    text-align: center;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.game img {
+    width: 100%;
+    max-width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.game .p {
+    display: none;
+}
+
+.game.open p {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 10px auto;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.game .description {
+    display: none;
+}
+
+.game.open .description {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 10px auto;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.game:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-btn {
+    display: block;
+    background-color: #44445a;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.sort-btn {
+    display: block;
+    background-color: #44445a;
+    color: #e0e0e0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.sort-btn:hover {
+    background-color: #55556a;
+}
+
+.sort-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.5);
+}
+
+@media (max-width: 600px) {
+
+    /* 화면 너비가 600px 이하일 때만 적용되는 규칙 */
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    main {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .game-list {
+        display: grid;
+        gap: 12px;
+    }
+}

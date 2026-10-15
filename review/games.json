@@ -1,0 +1,34 @@
+[
+    {
+        "title": "Dead Cells",
+        "titleKo": "데드 셀",
+        "year": 2018,
+        "image": "images/game1.png",
+        "description": "빠른 전투와 탐험을 결합한 로그라이트 메트로배니아입니다.",
+        "url": "https://dead-cells.com/"
+    },
+    {
+        "title": "Hollow Knight",
+        "titleKo": "할로우 나이트",
+        "year": 2017,
+        "image": "images/game2.png",
+        "description": "깊은 세계와 아름다운 그래픽을 자랑하는 액션 어드벤처 게임입니다.",
+        "url": "https://www.hollowknight.com/"
+    },
+    {
+        "title": "Death's Gambit",
+        "titleKo": "데스 갬빗",
+        "year": 2018,
+        "image": "images/game3.png",
+        "description": "독특한 퍼즐과 전략적인 전투를 결합한 RPG 게임입니다.",
+        "url": "https://www.deathsgambit.com/"
+    },
+    {
+        "title": "Hollow Knight: Silksong",
+        "titleKo": "할로우 나이트: 실크송",
+        "year": 2025,
+        "image": "images/game4.png",
+        "description": "아름다운 그래픽과 정교한 전투, 다채로운 탐험 요소를 자랑하는 2D 액션 어드벤처 게임입니다.",
+        "url": "https://hollowknightsilksong.com/"
+    }
+]
