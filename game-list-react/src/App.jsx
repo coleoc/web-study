@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { games } from "./data/games.js";
-import GameCard from "./components/GameCard.jsx";
+import Header from "./components/Header.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import SortButtons from "./components/SortButtons.jsx";
+import GameList from "./components/GameList.jsx";
 
 function App() {
   const [keyword, setKeyword] = useState("");
@@ -20,14 +23,8 @@ function App() {
   }
 
   return (
-    <body>
-      <header>
-        <h1>메트로배니아 추천 사이트</h1>
-        <nav>
-          <a href="#games">게임들</a>
-          <a href="#introduce">소개</a>
-        </nav>
-      </header>
+    <>
+      <Header title="메트로배니아 추천 사이트" />
 
       <main>
         <section className="card" id="introduce">
@@ -39,37 +36,18 @@ function App() {
           </p>
         </section>
         <section className="card" id="games">
-          <div className="search">
-            <button className="sort-btn" onClick={() => setSortType("recommended")}>전체</button>
-            <button className="sort-btn" onClick={() => setSortType("nameAsc")}>이름순</button>
-            <button className="sort-btn" onClick={() => setSortType("yearDesc")}>최신순</button>
-            <input
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-              placeholder="게임 이름 검색"
-            />
-          </div>
-          
-          <div className="game-list">
-            {sortedGames.length === 0 ? (
-              <p>검색 결과가 없습니다.</p>
-            ) : (
-              sortedGames.map((game) => (
-                <GameCard key={game.title} {...game} />
-              ))
-            )}
-          </div>
-
+          <h2>게임들</h2>
+          <SearchBar keyword={keyword} onKeywordChange={setKeyword} />
+          <SortButtons sortType={sortType} onSortChange={setSortType} />
+          <GameList games={sortedGames} />
         </section>
+
       </main>
 
       <footer>
         <p>© 2026 이중탁</p>
       </footer>
-
-    </body>
-
-
+    </>
   );
 }
 
