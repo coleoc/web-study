@@ -1,13 +1,33 @@
-import { useState } from "react";
-import { games } from "./data/games.js";
+import { useState, useEffect } from "react";
 import Header from "./components/Header.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import SortButtons from "./components/SortButtons.jsx";
 import GameList from "./components/GameList.jsx";
 
 function App() {
+  const [games, setGames] = useState([]);
+  const [status, setStatus] = useState("loading");
   const [keyword, setKeyword] = useState("");
   const [sortType, setSortType] = useState("recommended");
+
+  useEffect(() => {
+    const loadGames = async () => {
+      try {
+        const response = await fetch("/games.json");
+        if (!response.ok) {
+          throw new Error("응답 실패: " + response.status);
+        }
+        const data = await response.json();
+        setGames(data);
+        setStatus("success");
+      } catch (error) {
+        console.error(error);
+        setStatus("error");
+      }
+    };
+
+    loadGames();
+  }, []);
 
   const filteredGames = games.filter((game) =>
     game.title.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -17,7 +37,8 @@ function App() {
   let sortedGames = filteredGames;
 
   if (sortType === "nameAsc") {
-    sortedGames = [...sortedGames].sort((a, b) => a.title.localeCompare(b.title));
+    sortedGames = [...sortedGames].sort((a, b) =>
+      a.title.localeCompare(b.title));
   } else if (sortType === "yearDesc") {
     sortedGames = [...sortedGames].sort((a, b) => b.year - a.year);
   }
@@ -39,7 +60,11 @@ function App() {
           <h2>게임들</h2>
           <SearchBar keyword={keyword} onKeywordChange={setKeyword} />
           <SortButtons sortType={sortType} onSortChange={setSortType} />
-          <GameList games={sortedGames} />
+          {status === "loading" && <p>게임 목록을 불러오는 중...</p>}
+          {status === "error" && <p>게임 목록을 불러오지 못했습니다.</p>}
+          {status === "success" && (
+            <GameList games={sortedGames} />
+          )}
         </section>
 
       </main>
