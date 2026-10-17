@@ -1,6 +1,11 @@
-import GameCard from "./GameCard.jsx";
+import GameCard from "./GameCard";
+import type { Game } from "../types";
 
-function GameList({ games }) {
+type GameListProps = {
+    games: Game[];
+};
+
+function GameList({ games }: GameListProps) {
     if (games.length === 0) {
         return <p>검색 결과가 없습니다.</p>;
     }

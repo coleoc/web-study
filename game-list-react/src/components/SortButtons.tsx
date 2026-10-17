@@ -1,4 +1,13 @@
-function SortButtons({ sortType, onSortChange }) {
+"use client";
+
+import type { SortType } from "../types";
+
+type SortButtonsProps = {
+    sortType: SortType;
+    onSortChange: (value: SortType) => void;
+};
+
+function SortButtons({ sortType, onSortChange }: SortButtonsProps) {
     return (
         <div className="sort-buttons">
             <button

@@ -1,4 +1,11 @@
-function SearchBar({ keyword, onKeywordChange }) {
+"use client";
+
+type SearchBarProps = {
+    keyword: string;
+    onKeywordChange: (value: string) => void;
+};
+
+function SearchBar({ keyword, onKeywordChange }: SearchBarProps) {
     return (
         <input
             className="search"

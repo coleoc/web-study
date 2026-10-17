@@ -1,6 +1,9 @@
-import { useState } from "react";
+"use client";
 
-function GameCard({ image, title, year, description, url }) {
+import { useState } from "react";
+import type { Game } from "../types";
+
+function GameCard({ image, title, year, description, url }: Game) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -9,8 +12,7 @@ function GameCard({ image, title, year, description, url }) {
             <h3>{title}</h3>
             <p className="year">{year}</p>
 
-            <button className="toggle-btn" onClick={() =>
-                setIsOpen(!isOpen)}>
+            <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? "설명 닫기" : "설명 열기"}
             </button>
 

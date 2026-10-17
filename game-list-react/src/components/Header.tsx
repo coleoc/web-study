@@ -3,7 +3,11 @@ const navList = [
     { label: "게임들", target: "#games" },
 ];
 
-function Header({ title }) {
+type HeaderProps = {
+    title: string;
+};
+
+function Header({ title }: HeaderProps) {
     return (
         <header>
             <h1>{title}</h1>

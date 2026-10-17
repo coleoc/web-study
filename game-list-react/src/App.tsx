@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Header from "./components/Header.jsx";
-import SearchBar from "./components/SearchBar.jsx";
-import SortButtons from "./components/SortButtons.jsx";
-import GameList from "./components/GameList.jsx";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import SortButtons from "./components/SortButtons";
+import GameList from "./components/GameList";
+import type { Game, Status, SortType } from "./types";
 
 function App() {
-  const [games, setGames] = useState([]);
-  const [status, setStatus] = useState("loading");
+  const [games, setGames] = useState<Game[]>([]);
+  const [status, setStatus] = useState<Status>("loading");
   const [keyword, setKeyword] = useState("");
-  const [sortType, setSortType] = useState("recommended");
+  const [sortType, setSortType] = useState<SortType>("recommended");
 
   useEffect(() => {
     const loadGames = async () => {
